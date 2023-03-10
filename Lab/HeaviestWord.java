@@ -1,4 +1,4 @@
-
+package Lab;
 
 public class HeaviestWord {
     public static int findVocals(String word) {

@@ -1,3 +1,5 @@
+package Lab;
+
 public class ThePerfectBuild {
     public static int getStrongness(String heroType, int gold, int n, String items) {
         int[] dp = new int[gold+1];

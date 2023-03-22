@@ -1,35 +1,32 @@
 
 
 public class HeaviestWord {
-    public static int findVocals(String word) {
-        int vocal = 0;
-        for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i) == 'i' || word.charAt(i) == 'o' || word.charAt(i) == 'u') {
-                vocal++;
-            }
-        }
-        System.out.format("%s %d\n",word,vocal);
-        return vocal;
-    }
     public static String heaviest(String[] words) {
-        int maxvocal = 0;
-        int index = 0;
-        int max=findVocals(words[0]);
-        for (int i = 0; i < words.length-1; i++) {
-            max=Math.max(max, findVocals(words[i+1]));
-        }
-        for (int i=0;i<words.length;i++)
-        {
-            if (findVocals(words[i])==max)
-            {
-                return words[i];
+        int maxVowels = 0;
+        int flag=0;
+        String lastword="";
+        String heaviestWord = "";
+
+        for (String word : words) {
+            int numVowels = 0;
+
+            for (char c : word.toCharArray()) {
+                if ("aeiouy".indexOf(c) != -1) {
+                    numVowels++;
+                }
+            }
+            lastword=word;
+            if (numVowels > maxVowels || (numVowels == maxVowels && word.compareTo(heaviestWord) < 0)) {
+                flag=1;
+                maxVowels = numVowels;
+                heaviestWord = word;
             }
         }
-        return "";
-    }
-    public static void main(String[] args) {
-        String[] words = {"akjqwhe", "asdasd", "qwe", "asde", "asdasd", "qweqwe","af", "qqqqqqq", "aeoi"};
-        String longestString = heaviest(words);
-        System.out.format("heaviest string: '%s'\n", longestString);
+
+        if (flag==0){
+            return lastword;
+        }
+        else
+            return heaviestWord;
     }
 }

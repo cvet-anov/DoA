@@ -1,4 +1,4 @@
-
+package Lab;
 
 public class HeaviestWord {
     public static String heaviest(String[] words) {
